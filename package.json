@@ -1,6 +1,6 @@
 {
   "name": "@hugo-fixit/fixit-releaser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Versioning, change-log and release for Hugo FixIt theme",
   "keywords": [
     "fixit",
