@@ -1,0 +1,17 @@
+{
+  "output": "CHANGELOG.md",
+  "sortCommits": "relevance",
+  "commitLimit": false,
+  "ignoreCommitPattern": "(Chore|chore):|\\(ignore\\)",
+  "replaceText": {
+    "^(Feat|feat):": ":sparkles: Feat:",
+    "^(Fix|fix):": ":bug: Fix:",
+    "^(Build|build):": ":hammer: Build:",
+    "^(Refactor|refactor):": ":recycle: Refactor:",
+    "^(Style|style):": ":lipstick: Style:",
+    "^(Perf|perf):": ":zap: Perf:",
+    "^(Test|test):": ":white_check_mark: Test:",
+    "^(Docs|docs):": ":memo: Docs:",
+    "^(Chore|chore):": ":wrench: Chore:"
+  }
+}
