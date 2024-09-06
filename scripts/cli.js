@@ -32,7 +32,7 @@ if (command === 'version') {
   const setupPath = join(__root, 'changelog/setup.cjs')
 
   execSync(
-    `auto-changelog --config ${configPath} --template ${templatePath} --handlebars-setup ${setupPath} ${changelogArgs}`,
+    `npx auto-changelog --config ${configPath} --template ${templatePath} --handlebars-setup ${setupPath} ${changelogArgs}`,
     { stdio: 'inherit' },
   )
 } else {
