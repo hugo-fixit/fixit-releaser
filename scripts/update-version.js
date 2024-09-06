@@ -1,6 +1,5 @@
 import fs from 'fs'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
+import { join } from 'path'
 import { execSync } from 'child_process'
 
 // node build/update-version.js --dev/--prod
@@ -32,9 +31,9 @@ if (stage !== 'prod') {
   }
 }
 // Get the root directory of the project
-const __root = process.cwd()
-const initHtmlPath = join(__root, 'layouts/partials/init/index.html')
-const packageJsonPath = join(__root, 'package.json')
+const __project_root = process.cwd()
+const initHtmlPath = join(__project_root, 'layouts/partials/init/index.html')
+const packageJsonPath = join(__project_root, 'package.json')
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
 const version = packageJson.version
 // Get the short hash of the last commit (can not get this commit hash at pre-commit hook)
