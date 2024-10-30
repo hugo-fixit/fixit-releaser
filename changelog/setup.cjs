@@ -19,8 +19,14 @@ module.exports = function (Handlebars) {
    * @example {{githubUser "Cell"}} => "Lruihao"
    */
   Handlebars.registerHelper('githubUser', function (context, { hash: { linked = false }}) {
+    /**
+     * Map Commit names to GitHub usernames
+     * if your commit name is not same as your GitHub username, add an entry here.
+     */
     const map = {
+      // Author
       'Cell': "Lruihao",
+      // Collaborators, Contributors
     }
     const username = map[context] || context
     if (linked) {
