@@ -2,7 +2,7 @@
   "output": "CHANGELOG.md",
   "sortCommits": "relevance",
   "commitLimit": false,
-  "ignoreCommitPattern": "(Chore|chore):|\\(ignore\\)",
+  "ignoreCommitPattern": "(Chore|chore):|\\(ignore\\)|typo",
   "replaceText": {
     "^(Feat|feat):": ":sparkles: Feat:",
     "^(Fix|fix):": ":bug: Fix:",
