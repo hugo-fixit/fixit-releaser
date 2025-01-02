@@ -24,6 +24,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # Fetch all history for generating release notes
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,19 +36,16 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-          pnpm log --starting-version ${{ github.ref_name }}
+          npm run log -- --starting-version ${{ github.ref_name }}
           sed -i '1,4d' CHANGELOG.md
 
       - name: GitHub Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           # Creates a draft release. Defaults to false
-          # draft: true
+          draft: true
           body_path: CHANGELOG.md
           # Newline-delimited list of path globs for asset files to upload
           # files: |
           #   dist/*.js
           #   dist/*.js.map
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

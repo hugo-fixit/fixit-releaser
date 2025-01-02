@@ -28,6 +28,6 @@
     "auto-changelog": "^2.4.0"
   },
   "scripts": {
-    "log": "fixit-releaser changelog"
+    "log": "node scripts/cli.js changelog"
   }
 }
