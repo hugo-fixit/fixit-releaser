@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file.
   {{/commit-list}}
 
   {{!-- List commits that add new features, but exclude those that have `:sparkles:` in the message --}}
-  {{#commit-list commits heading='### :tada: New Features' message='(:tada:|Feat:|feat:)' exclude='^:sparkles:'}}
+  {{#commit-list commits heading='### :tada: New Features' message='(:tada:|Feat(new):|feat(new):)' exclude='^:sparkles:'}}
   - {{subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
@@ -40,10 +40,15 @@ All notable changes to this project will be documented in this file.
   {{/commit-list}}
 
   {{!-- List other changes commits --}}
-  {{#commit-list commits heading='### :wrench: Other Changes' message='(Refactor:|refactor:|Style:|style:|Test:|test:|Chore:|chore:|Build:|build:)'}}
+  {{#commit-list commits heading='### :wrench: Other Changes' message='(Refactor:|refactor:|Style:|style:|Test:|test:)'}}
   - {{subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
+  {{!-- List dependencies updates --}}
+  {{#commit-list commits heading='### :arrow_up: Dependencies Updates' message='(:arrow_up:|Chore:|chore:|Build:|build:)'}}
+  - {{subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+  
   {{#if merges}}
     ### Merged pull requests
 

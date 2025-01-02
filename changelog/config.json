@@ -2,7 +2,7 @@
   "output": "CHANGELOG.md",
   "sortCommits": "relevance",
   "commitLimit": false,
-  "ignoreCommitPattern": "(Chore|chore):|\\(ignore\\)|typo",
+  "ignoreCommitPattern": "\\(i|ignore\\)|typo",
   "replaceText": {
     "^(Feat|feat):": ":sparkles: Feat:",
     "^(Fix|fix):": ":bug: Fix:",
@@ -12,6 +12,10 @@
     "^(Perf|perf):": ":zap: Perf:",
     "^(Test|test):": ":white_check_mark: Test:",
     "^(Docs|docs):": ":memo: Docs:",
-    "^(Chore|chore):": ":wrench: Chore:"
+    "^(Chore|chore):": ":wrench: Chore:",
+    "^(Chore|chore)\\(deps-dev\\):": ":arrow_up: Chore(deps-dev):",
+    "^(Chore|chore)\\(deps\\):": ":arrow_up: Chore(deps):",
+    "^(Build|build)\\(deps-dev\\):": ":arrow_up: Build(deps-dev):",
+    "^(Build|build)\\(deps\\):": ":arrow_up: Build(deps):"
   }
 }
