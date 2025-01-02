@@ -23,5 +23,8 @@
   },
   "dependencies": {
     "auto-changelog": "^2.4.0"
+  },
+  "scripts": {
+    "log": "fixit-releaser changelog"
   }
 }

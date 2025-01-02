@@ -31,14 +31,17 @@ jobs:
           node-version: 16
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm run log -- --starting-version ${{ github.ref_name }}
 
       - name: GitHub Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           # Creates a draft release. Defaults to false
-          draft: true
+          # draft: true
+          body_path: CHANGELOG.md
           # Newline-delimited list of path globs for asset files to upload
           # files: |
           #   dist/*.js
