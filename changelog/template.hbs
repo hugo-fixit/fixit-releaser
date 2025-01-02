@@ -44,14 +44,8 @@ All notable changes to this project will be documented in this file.
   - {{subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  **Full Changelog**: {{href}}
-
-  ---
-
-  ### Uncategorized
-
   {{#if merges}}
-    #### Merged pull requests
+    ### Merged pull requests
 
     {{#each merges}}
       {{!-- {{#if href}}[`#{{id}}`]({{href}}){{/if}} --}}
@@ -60,11 +54,13 @@ All notable changes to this project will be documented in this file.
   {{/if}}
 
   {{#if fixes}}
-    #### Closed issues
+    ### Closed issues
 
     {{#each fixes}}
       - {{#if commit.breaking}}**Breaking change:** {{/if}}{{commit.subject}}{{#each fixes}} {{#if id}}#{{id}}{{/if}}{{/each}} by {{githubUser commit.author}}
     {{/each}}
   {{/if}}
+
+  **Full Changelog**: {{href}}
 
 {{/each}}

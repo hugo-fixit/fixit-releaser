@@ -5,7 +5,7 @@ Automatically update FixIt internal version number and generate changelog.
 ## Installation
 
 ```bash
-npm install fixit-releaser --save-dev
+npm install @hugo-fixit/fixit-releaser --save-dev
 ```
 
 ## Configuration
