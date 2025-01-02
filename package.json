@@ -1,6 +1,6 @@
 {
   "name": "@hugo-fixit/fixit-releaser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Versioning, change-log and release for Hugo FixIt theme",
   "packageManager": "pnpm@9.15.0",
   "keywords": [
