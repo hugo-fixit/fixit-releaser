@@ -28,12 +28,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       
+      - uses: pnpm/action-setup@v4
       - name: Install dependencies
         run: |
-          npm ci
-          npm run log -- --starting-version ${{ github.ref_name }}
+          pnpm install --frozen-lockfile
+          pnpm log --starting-version ${{ github.ref_name }}
+          sed -i '1,4d' CHANGELOG.md
 
       - name: GitHub Release
         uses: softprops/action-gh-release@v2

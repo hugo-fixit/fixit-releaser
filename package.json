@@ -18,6 +18,9 @@
   "license": "MIT",
   "author": "Lruihao (https://lruihao.cn)",
   "type": "module",
+  "engines": {
+    "node": ">=18.12.0"
+  },
   "bin": {
     "fixit-releaser": "scripts/cli.js"
   },
