@@ -1,6 +1,6 @@
 {
   "name": "@hugo-fixit/fixit-releaser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Versioning, change-log and release for Hugo FixIt Similar commit style",
   "packageManager": "pnpm@9.15.0",
   "keywords": [
