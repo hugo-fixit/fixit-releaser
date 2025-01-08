@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 {{!-- if need, set replaceText in config.json "#(\\d+)": "[#$1](https://github.com/hugo-fixit/FixIt/issues/$1)" --}}
+{{!-- Based on https://github.com/cookpete/auto-changelog/blob/master/templates/conventional.hbs --}}
 
 {{#each releases}}
   {{#if href}}
@@ -66,6 +67,10 @@ All notable changes to this project will be documented in this file.
     {{/each}}
   {{/if}}
 
-  **Full Changelog**: {{href}}
+  {{#if href}}
+    **Full Changelog**: {{ href}}
+  {{else}}
+    {{!-- TODO --}}
+  {{/if}}
 
 {{/each}}

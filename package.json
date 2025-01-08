@@ -19,7 +19,7 @@
   "author": "Lruihao (https://lruihao.cn)",
   "type": "module",
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=18"
   },
   "bin": {
     "fixit-releaser": "scripts/cli.js"

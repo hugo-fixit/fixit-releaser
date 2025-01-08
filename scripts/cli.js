@@ -3,6 +3,7 @@
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
+import { run } from 'auto-changelog/src/run.js'
 
 const args = process.argv.slice(2)
 const __root = join(dirname(fileURLToPath(import.meta.url)), '../')
@@ -26,15 +27,26 @@ if (command === 'version') {
     process.exit(1)
   }
 } else if (command === 'changelog') {
-  const changelogArgs = args.slice(1).join(' ')
   const configPath = join(__root, 'changelog/config.json')
   const templatePath = join(__root, 'changelog/template.hbs')
   const setupPath = join(__root, 'changelog/setup.cjs')
-
-  execSync(
-    `npx auto-changelog --config ${configPath} --template ${templatePath} --handlebars-setup ${setupPath} ${changelogArgs}`,
-    { stdio: 'inherit' },
-  )
+  const changelogArgs = process.argv
+  changelogArgs.splice(2, 1)
+  if (!changelogArgs.includes('--config')) {
+    changelogArgs.push('--config', configPath)
+  }
+  if (!changelogArgs.includes('--template')) {
+    changelogArgs.push('--template', templatePath)
+  }
+  if (!changelogArgs.includes('--handlebars-setup')) {
+    changelogArgs.push('--handlebars-setup', setupPath)
+  }
+  // run auto-changelog
+  run(changelogArgs).catch(error => {
+    console.log('\n')
+    console.error(error)
+    process.exit(1)
+  })
 } else {
   console.error('Invalid command. Use version or changelog')
   process.exit(1)
