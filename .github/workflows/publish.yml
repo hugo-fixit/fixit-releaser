@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           # scope: '@cell-x'
