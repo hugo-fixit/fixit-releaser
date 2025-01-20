@@ -19,7 +19,6 @@ if (command === 'version') {
   const stage: string = args[1]
   const updateVersionPath: string = join(__root, './dist/scripts/update-version.js')
   if (stage === '--dev') {
-    console.log('Updating the development version...', updateVersionPath)
     execSync(`node ${updateVersionPath} --dev`, { stdio: 'inherit' })
   }
   else if (stage === '--prod') {

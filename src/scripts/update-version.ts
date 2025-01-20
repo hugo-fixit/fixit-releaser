@@ -22,7 +22,7 @@ const gitDiff: string = execSync('git diff --cached --name-only').toString().tri
 
 if (stage !== 'prod') {
   // Avoid conflicts when creating a Pull Request
-  if (!['dev', 'master'].includes(branch)) {
+  if (!['dev', 'master', 'main'].includes(branch)) {
     console.log(`The current branch is ${branch}, no need to update the FixIt version.`)
     process.exit(0)
   }
