@@ -1,5 +1,6 @@
-
 # FixIt Releaser
+
+[![NPM version](https://img.shields.io/npm/v/@hugo-fixit/fixit-releaser.svg)](https://www.npmjs.com/package/@hugo-fixit/fixit-releaser)
 
 中文 | [English](/README.en.md)
 

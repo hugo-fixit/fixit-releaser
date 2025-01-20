@@ -1,33 +1,49 @@
 {
   "name": "@hugo-fixit/fixit-releaser",
+  "type": "module",
   "version": "1.0.4",
-  "description": "Versioning, change-log and release for Hugo FixIt Similar commit style",
   "packageManager": "pnpm@9.15.0",
-  "keywords": [
-    "fixit",
-    "releaser"
-  ],
+  "description": "Versioning, change-log and release for Hugo FixIt Similar commit style",
+  "author": "Lruihao (https://lruihao.cn)",
+  "license": "MIT",
   "homepage": "https://github.com/hugo-fixit/fixit-releaser#readme",
-  "bugs": {
-    "url": "https://github.com/hugo-fixit/fixit-releaser/issues"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hugo-fixit/fixit-releaser.git"
   },
-  "license": "MIT",
-  "author": "Lruihao (https://lruihao.cn)",
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/hugo-fixit/fixit-releaser/issues"
+  },
+  "keywords": [
+    "fixit",
+    "releaser",
+    "auto-changelog"
+  ],
+  "bin": {
+    "fixit-releaser": "dist/bin/cli.js"
+  },
+  "files": [
+    "changelog",
+    "dist"
+  ],
   "engines": {
     "node": ">=18"
   },
-  "bin": {
-    "fixit-releaser": "scripts/cli.js"
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node ./dist/bin/cli.js changelog",
+    "dev": "tsx ./src/bin/cli.ts changelog",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "dependencies": {
     "auto-changelog": "^2.4.0"
   },
-  "scripts": {
-    "log": "node scripts/cli.js changelog"
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.14.0",
+    "@types/node": "^22.10.7",
+    "eslint": "^9.18.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
   }
 }

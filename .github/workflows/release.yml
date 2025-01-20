@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-          npm run log -- --starting-version ${{ github.ref_name }}
+          pnpm dev --starting-version ${{ github.ref_name }}
           sed -i '1,4d' CHANGELOG.md
 
       - name: GitHub Release
