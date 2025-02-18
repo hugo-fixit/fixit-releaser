@@ -25,7 +25,10 @@ module.exports = function (Handlebars) {
      */
     const map = {
       // Author
-      Cell: 'Lruihao',
+      'Cell': 'Lruihao',
+      // Bots
+      'Cell[bot]': 'lrhx',
+      'dependabot[bot]': 'dependabot',
       // Collaborators, Contributors
     }
     const username = map[context] || context
