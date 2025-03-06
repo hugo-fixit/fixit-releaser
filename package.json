@@ -37,13 +37,13 @@
     "lint:fix": "eslint src --fix"
   },
   "dependencies": {
-    "auto-changelog": "^2.4.0"
+    "auto-changelog": "^2.5.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.1.1",
-    "@types/node": "^22.10.7",
-    "eslint": "^9.18.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "@antfu/eslint-config": "^4.5.1",
+    "@types/node": "^22.13.9",
+    "eslint": "^9.21.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
   }
 }
