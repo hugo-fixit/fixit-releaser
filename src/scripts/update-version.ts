@@ -16,6 +16,7 @@ const match: string[] = [
   'hugo.toml',
   'package.json',
   'package-lock.json',
+  'pnpm-lock.yaml',
   'theme.toml',
 ]
 const gitDiff: string = execSync('git diff --cached --name-only').toString().trim()
@@ -55,7 +56,13 @@ if (lastVersion === version && gitDiff.includes('layouts/partials/init/index.htm
 // Update the version number in layouts/partials/init/index.html
 fs.writeFileSync(initHtmlPath, newInitHtml)
 // Add the updated files to the git stage
-execSync('git add layouts/partials/init/index.html package.json package-lock.json')
+execSync('git add layouts/partials/init/index.html package.json')
+if (fs.existsSync(join(__project_root, 'package-lock.json'))) {
+  execSync('git add package-lock.json')
+}
+if (fs.existsSync(join(__project_root, 'pnpm-lock.yaml'))) {
+  execSync('git add pnpm-lock.yaml')
+}
 console.log(`Update the FixIt version from v${lastVersion} to v${latestVersion}.`)
 
 export default latestVersion
