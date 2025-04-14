@@ -1,3 +1,7 @@
 node_modules/
 CHANGELOG.md
 dist/
+
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
