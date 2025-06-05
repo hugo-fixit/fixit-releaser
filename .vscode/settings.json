@@ -53,5 +53,8 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "yaml.schemas": {
+    "file:///Users/liruihao/.vscode/extensions/davidanson.vscode-markdownlint-0.60.0/markdownlint-cli2-config-schema.json": "file:///Users/liruihao/workspace/hugo-fixit/fixit-releaser/.github/dependabot.yml"
+  }
 }
