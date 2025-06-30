@@ -34,7 +34,7 @@ if (stage !== 'prod') {
 }
 // Get the root directory of the project
 const __project_root: string = process.cwd()
-const initHtmlPath: string = join(__project_root, 'layouts/partials/init/index.html')
+const initHtmlPath: string = join(__project_root, 'layouts/_partials/init/index.html')
 const packageJsonPath: string = join(__project_root, 'package.json')
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
 const version: string = packageJson.version
@@ -47,16 +47,16 @@ const latestVersion: string = stage === 'prod' ? version : devVersion
 const lastVersion: string = initHtml.match(/v\d+\.\d+\.\d+(-\w+)?/)![0].slice(1)
 const newInitHtml: string = initHtml.replace(/v\d+\.\d+\.\d+(-\w+)?/, `v${latestVersion}`)
 
-if (lastVersion === version && gitDiff.includes('layouts/partials/init/index.html')) {
+if (lastVersion === version && gitDiff.includes('layouts/_partials/init/index.html')) {
   // After running `npm version` or manually modifying the version number, skip the update
   console.log(`The FixIt version has been updated to v${lastVersion}.`)
   process.exit(0)
 }
 
-// Update the version number in layouts/partials/init/index.html
+// Update the version number in layouts/_partials/init/index.html
 fs.writeFileSync(initHtmlPath, newInitHtml)
 // Add the updated files to the git stage
-execSync('git add layouts/partials/init/index.html package.json')
+execSync('git add layouts/_partials/init/index.html package.json')
 if (fs.existsSync(join(__project_root, 'package-lock.json'))) {
   execSync('git add package-lock.json')
 }
