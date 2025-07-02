@@ -40,8 +40,10 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
 const version: string = packageJson.version
 // Get the short hash of the last commit (can not get this commit hash at pre-commit hook)
 const shortHash: string = execSync('git rev-parse --short HEAD').toString().trim()
-// Build the development version v{major}.{minor}.{patch+1}-{shortHash}
-const devVersion: string = `${version.replace(/(\d+)$/, (match, part) => (Number.parseInt(part) + 1).toString())}-${shortHash}`
+// Build the development version v{major}.{minor}.{patch+1}-{timestamp}-{shortHash}
+// e.g. v0.3.21-20250702061540-abcdefg
+const timestamp: string = new Date().toISOString().replace(/[-:TZ]/g, '').slice(0, -4)
+const devVersion: string = `${version.replace(/(\d+)$/, (match, part) => (Number.parseInt(part) + 1).toString())}-${timestamp}-${shortHash}`
 const initHtml: string = fs.readFileSync(initHtmlPath, 'utf8')
 const latestVersion: string = stage === 'prod' ? version : devVersion
 const lastVersion: string = initHtml.match(/v\d+\.\d+\.\d+(-\w+)?/)![0].slice(1)
