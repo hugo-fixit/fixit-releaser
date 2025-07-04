@@ -46,8 +46,9 @@ const timestamp: string = new Date().toISOString().replace(/[-:TZ]/g, '').slice(
 const devVersion: string = `${version.replace(/(\d+)$/, (match, part) => (Number.parseInt(part) + 1).toString())}-${timestamp}-${shortHash}`
 const initHtml: string = fs.readFileSync(initHtmlPath, 'utf8')
 const latestVersion: string = stage === 'prod' ? version : devVersion
-const lastVersion: string = initHtml.match(/v\d+\.\d+\.\d+(-\w+)?/)![0].slice(1)
-const newInitHtml: string = initHtml.replace(/v\d+\.\d+\.\d+(-\w+)?/, `v${latestVersion}`)
+const versionRegex: RegExp = /v\d+\.\d+\.\d+(-[\w.\-]+)?/
+const lastVersion: string = initHtml.match(versionRegex)![0].slice(1)
+const newInitHtml: string = initHtml.replace(versionRegex, `v${latestVersion}`)
 
 if (lastVersion === version && gitDiff.includes('layouts/_partials/init/index.html')) {
   // After running `npm version` or manually modifying the version number, skip the update
