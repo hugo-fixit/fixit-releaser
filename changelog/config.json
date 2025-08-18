@@ -2,7 +2,7 @@
   "output": "CHANGELOG.md",
   "sortCommits": "relevance",
   "commitLimit": false,
-  "ignoreCommitPattern": "\\(i|ignore\\)|typo",
+  "ignoreCommitPattern": "\\(i|ignore\\)|typo|ignore-for-release",
   "replaceText": {
     "^(Feat|feat):": ":sparkles: Feat:",
     "^(Fix|fix):": ":bug: Fix:",
