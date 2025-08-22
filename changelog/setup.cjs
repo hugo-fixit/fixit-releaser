@@ -37,4 +37,29 @@ module.exports = function (Handlebars) {
     }
     return `@${username}`
   })
+
+  /**
+   * Handlebars helper to capitalize the first letter of a string
+   * @param {string} context the string to capitalize
+   * @example {{capitalize "hello world"}} => "Hello world"
+   * @example {{capitalize "**scope**: message"}} => "**Scope**: Message"
+   */
+  Handlebars.registerHelper('capitalize', (context) => {
+    if (!context || typeof context !== 'string') {
+      return context
+    }
+
+    // Check if it matches **scope**: pattern using regex
+    const scopeMatch = context.match(/^\*\*([^*]+)\*\*:\s(.*)$/)
+    if (scopeMatch) {
+      const scope = scopeMatch[1]
+      const message = scopeMatch[2]
+      const capitalizedScope = scope.charAt(0).toUpperCase() + scope.slice(1)
+      const capitalizedMessage = message.charAt(0).toUpperCase() + message.slice(1)
+      return `**${capitalizedScope}**: ${capitalizedMessage}`
+    }
+
+    // Regular capitalization
+    return context.charAt(0).toUpperCase() + context.slice(1)
+  })
 }

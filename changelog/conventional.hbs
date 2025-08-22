@@ -1,0 +1,129 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+{{!--
+Introduction
+- This template tries to follow conventional commits format https://www.conventionalcommits.org/en/v1.0.0/
+- The template uses regex to filter commit types into their own headings (this is more than just fixes and features headings)
+- It also uses the replaceText function in package.json to remove the commit type text from the message, because the headers are shown instead.
+
+- The text 'Breaking:' or 'Breaking changes:' can be located anywhere in the commit.
+- The types feat:, fix:, chore:, docs:, refactor:, test:, style:, perf: must be at the beginning of the commit subject with an : on end (first letter case is ignored).
+  - They can optionally have a scope set to outline the module or component that is affected eg feat(bldAssess):
+- Emoji can be used with or without the type prefix (eg: :sparkles: feat: xxx, :sparkles: xxx, ✨ feat: xxx, ✨ xxx)
+
+Example Definitions
+- feat: A new feature
+- fix: A bug fix
+- perf: A code change that improves performance
+- refactor: A code change that neither fixes a bug nor adds a feature
+- style: Changes that do not affect the meaning of the code (white-space, formatting, spelling mistakes, missing semi-colons, etc)
+- test: Adding missing tests or correcting existing tests
+- docs: Adding/updating documentation
+- chore: Something like updating a library version, or moving files to be in a better location and updating all file refs
+
+Emoji Format Examples
+- :sparkles: feat: xxx / ✨ feat: xxx / :sparkles: xxx / ✨ xxx
+- :bug: fix: xxx / 🐛 fix: xxx / :bug: xxx / 🐛 xxx
+- :wrench: chore: xxx / 🔧 chore: xxx / :wrench: xxx / 🔧 xxx
+- :memo: docs: xxx / 📝 docs: xxx / :memo: xxx / 📝 xxx
+- :recycle: refactor: xxx / ♻️ refactor: xxx / :recycle: xxx / ♻️ xxx
+- :white_check_mark: test: xxx / ✅ test: xxx / :white_check_mark: xxx / ✅ xxx
+- :art: style: xxx / 🎨 style: xxx / :art: xxx / 🎨 xxx
+- :zap: perf: xxx / ⚡ perf: xxx / :zap: xxx / ⚡ xxx
+--}}
+
+{{!--
+Regex reminders
+ ^ = starts with
+ \( = ( character (otherwise it is interpreted as a regex lookup group)
+ * = zero or more of the previous character
+ \s = whitespace
+ . = any character except newline
+ | = or
+ [aA] = character a or character A
+--}}
+
+{{#each releases}}
+  {{#if href}}
+    ## [{{title}}]({{href}}){{#if tag}} - {{isoDate}}{{/if}}
+  {{else}}
+    ## {{title}}{{#if tag}} - {{isoDate}}{{/if}}
+  {{/if}}
+
+  {{#if summary}}
+    {{summary}}
+  {{/if}}
+
+  {{#if merges}}
+    ### Merged PRs
+
+    {{#each merges}}
+      - {{#if commit.breaking}}**Breaking change:** {{/if}}{{capitalize message}} by {{githubUser author}} in {{#if id}}#{{id}}{{/if}}
+    {{/each}}
+
+    {{#if fixes}}
+    {{else}}
+      ---
+    {{/if}}
+  {{/if}}
+
+  {{#if fixes}}
+    ### Closed Issues
+
+    {{#each fixes}}
+      - {{#if commit.breaking}}**Breaking change:** {{/if}}{{capitalize commit.subject}}{{#each fixes}} {{#if id}}#{{id}}{{/if}}{{/each}} by {{githubUser commit.author}}
+    {{/each}}
+
+    ---
+  {{/if}}
+
+  {{!-- List commits with 'breaking:' or 'Breaking change:' anywhere in the message under a heading --}}
+  {{#commit-list commits heading='### :warning: Breaking Changes' message='[bB]reaking [cC]hange:|[bB]reaking:' }}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{!-- List commits organised under a heading, but not those already listed in the breaking section --}}
+  {{#commit-list commits heading='### :tada: New Features' message='^[fF]eat:|[fF]eat\(|^:sparkles:|^:tada:|^✨|^🎉' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :bug: Fixes' message='^[fF]ix:|^[fF]ix\(|^:bug:|^🐛' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :wrench: Chores And Housekeeping' message='^[cC]hore:|^[cC]hore\(|^:wrench:|^:hammer:|^🔧|^🔨' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :memo: Documentation Changes' message='^[dD]ocs:|^[dD]ocs\(|^:memo:|^:book:|^📝|^📚' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :recycle: Refactoring and Updates' message='^[rR]efactor:|^[rR]efactor\(|^:recycle:|^♻️' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :white_check_mark: Changes to Test Assets' message='^[tT]est:|^[tT]est\(|^:white_check_mark:|^:test_tube:|^✅|^🧪' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :art: Tidying of Code eg Whitespace' message='^[sS]tyle:|^[sS]tyle\(|^:art:|^🎨' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :zap: Performance Improvements' message='^[pP]erf:|^[pP]erf\(|^:zap:|^:rocket:|^⚡|^🚀' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :sparkles: General Changes' exclude='[bB]reaking [cC]hange:|[bB]reaking:|^[fF]eat:|^[fF]eat\(|^[fF]ix:|^[fF]ix\(|^[cC]hore:|^[cC]hore\(|^[dD]ocs:|^[dD]ocs\(|^[rR]efactor:|^[rR]efactor\(|^[tT]est:|^[tT]est\(|^[sS]tyle:|^[sS]tyle\(|^[pP]erf:|^[pP]erf\(|^:sparkles:|^:tada:|^✨|^🎉|^:bug:|^🐛|^:wrench:|^:hammer:|^🔧|^🔨|^:memo:|^:book:|^📝|^📚|^:recycle:|^♻️|^:white_check_mark:|^:test_tube:|^✅|^🧪|^:art:|^🎨|^:zap:|^:rocket:|^⚡|^🚀'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#if href}}
+    **Full Changelog**: {{ href}}
+  {{/if}}
+
+{{/each}}
+<!-- markdownlint-disable-file MD024 -->

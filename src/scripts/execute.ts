@@ -31,14 +31,14 @@ export function execute() {
   }
   else if (command === 'changelog') {
     const configPath: string = join(__root, 'changelog/config.json')
-    const templatePath: string = join(__root, 'changelog/template.hbs')
+    const templatePath: string = join(__root, 'changelog/conventional.hbs')
     const setupPath: string = join(__root, 'changelog/setup.cjs')
     const changelogArgs: string[] = process.argv
     changelogArgs.splice(2, 1)
-    if (!changelogArgs.includes('--config')) {
+    if (!changelogArgs.includes('--config') && !changelogArgs.includes('-c')) {
       changelogArgs.push('--config', configPath)
     }
-    if (!changelogArgs.includes('--template')) {
+    if (!changelogArgs.includes('--template') && !changelogArgs.includes('-t')) {
       changelogArgs.push('--template', templatePath)
     }
     if (!changelogArgs.includes('--handlebars-setup')) {
