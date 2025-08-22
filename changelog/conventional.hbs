@@ -57,7 +57,7 @@ Regex reminders
   {{/if}}
 
   {{#if merges}}
-    ### Merged PRs
+    ### :twisted_rightwards_arrows: Merged PRs
 
     {{#each merges}}
       - {{#if commit.breaking}}**Breaking change:** {{/if}}{{capitalize message}} by {{githubUser author}} in {{#if id}}#{{id}}{{/if}}
@@ -70,7 +70,7 @@ Regex reminders
   {{/if}}
 
   {{#if fixes}}
-    ### Closed Issues
+    ### :heavy_check_mark: Closed Issues
 
     {{#each fixes}}
       - {{#if commit.breaking}}**Breaking change:** {{/if}}{{capitalize commit.subject}}{{#each fixes}} {{#if id}}#{{id}}{{/if}}{{/each}} by {{githubUser commit.author}}
@@ -85,7 +85,7 @@ Regex reminders
   {{/commit-list}}
 
   {{!-- List commits organised under a heading, but not those already listed in the breaking section --}}
-  {{#commit-list commits heading='### :tada: New Features' message='^[fF]eat:|[fF]eat\(|^:sparkles:|^:tada:|^✨|^🎉' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :tada: New Features And Enhancements :sparkles:' message='^[fF]eat:|[fF]eat\(|^:sparkles:|^:tada:|^✨|^🎉' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
