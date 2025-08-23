@@ -6,11 +6,12 @@ All notable changes to this project will be documented in this file.
 Introduction
 - This template tries to follow conventional commits format https://www.conventionalcommits.org/en/v1.0.0/
 - The template uses regex to filter commit types into their own headings (this is more than just fixes and features headings)
-- It also uses the replaceText function in package.json to remove the commit type text from the message, because the headers are shown instead.
+- It also uses the replaceText function in config.json to remove the commit type text from the message, because the headers are shown instead.
 
-- The text 'Breaking:' or 'Breaking changes:' can be located anywhere in the commit.
-- The types feat:, fix:, chore:, docs:, refactor:, test:, style:, perf: must be at the beginning of the commit subject with an : on end (first letter case is ignored).
-  - They can optionally have a scope set to outline the module or component that is affected eg feat(bldAssess):
+Commit Types:
+- The types feat:, fix:, chore:, docs:, refactor:, test:, style:, perf: must be at the beginning of the commit subject with a : at the end (first letter case is ignored)
+- They can optionally have a scope set to outline the module or component that is affected eg feat(api):, fix(ui):
+- BREAKING CHANGE: a commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change (correlating with MAJOR in Semantic Versioning). A BREAKING CHANGE can be part of commits of any type.
 - Emoji can be used with or without the type prefix (eg: :sparkles: feat: xxx, :sparkles: xxx, ✨ feat: xxx, ✨ xxx)
 
 Example Definitions
@@ -22,6 +23,12 @@ Example Definitions
 - test: Adding missing tests or correcting existing tests
 - docs: Adding/updating documentation
 - chore: Something like updating a library version, or moving files to be in a better location and updating all file refs
+
+Breaking Change Examples
+- feat!: allow provided config object to extend other configs
+- feat(api)!: send an email to the customer when a product is shipped
+- chore!: drop support for Node 6
+- BREAKING CHANGE: environment variables now take precedence over config files
 
 Emoji Format Examples
 - :sparkles: feat: xxx / ✨ feat: xxx / :sparkles: xxx / ✨ xxx
@@ -43,6 +50,8 @@ Regex reminders
  . = any character except newline
  | = or
  [aA] = character a or character A
+ ? = zero or one of the previous character
+ + = one or more of the previous character
 --}}
 
 {{#each releases}}
@@ -79,45 +88,45 @@ Regex reminders
     ---
   {{/if}}
 
-  {{!-- List commits with 'breaking:' or 'Breaking change:' anywhere in the message under a heading --}}
-  {{#commit-list commits heading='### :warning: Breaking Changes' message='[bB]reaking [cC]hange:|[bB]reaking:' }}
+  {{!-- List commits with Breaking Changes or type/type(scope)! formats --}}
+  {{#commit-list commits heading='### :warning: Breaking Changes' message='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:' }}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{!-- List commits organised under a heading, but not those already listed in the breaking section --}}
-  {{#commit-list commits heading='### :tada: New Features And Enhancements :sparkles:' message='^[fF]eat:|[fF]eat\(|^:sparkles:|^:tada:|^✨|^🎉' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{!-- List commits organized under a heading, but not those already listed in the breaking section --}}
+  {{#commit-list commits heading='### :tada: New Features And Enhancements :sparkles:' message='^[fF]eat:|[fF]eat\(|^:sparkles:|^:tada:|^✨|^🎉' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :bug: Fixes' message='^[fF]ix:|^[fF]ix\(|^:bug:|^🐛' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :bug: Fixes' message='^[fF]ix:|^[fF]ix\(|^:bug:|^🐛' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :wrench: Chores And Housekeeping' message='^[cC]hore:|^[cC]hore\(|^:wrench:|^:hammer:|^🔧|^🔨' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :wrench: Chores And Housekeeping' message='^[cC]hore:|^[cC]hore\(|^:wrench:|^:hammer:|^🔧|^🔨' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :memo: Documentation Changes' message='^[dD]ocs:|^[dD]ocs\(|^:memo:|^:book:|^📝|^📚' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :memo: Documentation Changes' message='^[dD]ocs:|^[dD]ocs\(|^:memo:|^:book:|^📝|^📚' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :recycle: Refactoring and Updates' message='^[rR]efactor:|^[rR]efactor\(|^:recycle:|^♻️' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :recycle: Refactoring and Updates' message='^[rR]efactor:|^[rR]efactor\(|^:recycle:|^♻️' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :white_check_mark: Changes to Test Assets' message='^[tT]est:|^[tT]est\(|^:white_check_mark:|^:test_tube:|^✅|^🧪' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :white_check_mark: Changes to Test Assets' message='^[tT]est:|^[tT]est\(|^:white_check_mark:|^:test_tube:|^✅|^🧪' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :art: Tidying of Code eg Whitespace' message='^[sS]tyle:|^[sS]tyle\(|^:art:|^🎨' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :art: Tidying of Code eg Whitespace' message='^[sS]tyle:|^[sS]tyle\(|^:art:|^🎨' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :zap: Performance Improvements' message='^[pP]erf:|^[pP]erf\(|^:zap:|^:rocket:|^⚡|^🚀' exclude='[bB]reaking [cC]hange:|[bB]reaking:'}}
+  {{#commit-list commits heading='### :zap: Performance Improvements' message='^[pP]erf:|^[pP]erf\(|^:zap:|^:rocket:|^⚡|^🚀' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :sparkles: General Changes' exclude='[bB]reaking [cC]hange:|[bB]reaking:|^[fF]eat:|^[fF]eat\(|^[fF]ix:|^[fF]ix\(|^[cC]hore:|^[cC]hore\(|^[dD]ocs:|^[dD]ocs\(|^[rR]efactor:|^[rR]efactor\(|^[tT]est:|^[tT]est\(|^[sS]tyle:|^[sS]tyle\(|^[pP]erf:|^[pP]erf\(|^:sparkles:|^:tada:|^✨|^🎉|^:bug:|^🐛|^:wrench:|^:hammer:|^🔧|^🔨|^:memo:|^:book:|^📝|^📚|^:recycle:|^♻️|^:white_check_mark:|^:test_tube:|^✅|^🧪|^:art:|^🎨|^:zap:|^:rocket:|^⚡|^🚀'}}
+  {{#commit-list commits heading='### :sparkles: General Changes' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:|^[fF]eat:|^[fF]eat\(|^[fF]ix:|^[fF]ix\(|^[cC]hore:|^[cC]hore\(|^[dD]ocs:|^[dD]ocs\(|^[rR]efactor:|^[rR]efactor\(|^[tT]est:|^[tT]est\(|^[sS]tyle:|^[sS]tyle\(|^[pP]erf:|^[pP]erf\(|^:sparkles:|^:tada:|^✨|^🎉|^:bug:|^🐛|^:wrench:|^:hammer:|^🔧|^🔨|^:memo:|^:book:|^📝|^📚|^:recycle:|^♻️|^:white_check_mark:|^:test_tube:|^✅|^🧪|^:art:|^🎨|^:zap:|^:rocket:|^⚡|^🚀'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 

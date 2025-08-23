@@ -5,7 +5,8 @@
   "releaseSummary": true,
   "ignoreCommitPattern": "\\((i|ignore|release)\\)|ignore-for-release",
   "replaceText": {
-    "([bB]reaking( [cC]hange)?: )": "",
+    "([bB]reaking( [cC]hange)?|BREAKING CHANGE): ": "",
+    "(^([a-zA-Z]+)(\\([^)]+\\))?!: )": "$3: ",
     "(^([fF]eat|:sparkles:|:tada:|✨|🎉)( [fF]eat)?: )": "",
     "(^((:sparkles:|:tada:|✨|🎉) )?[fF]eat\\()": "(",
     "(^([fF]ix|:bug:|🐛)( [fF]ix)?: )": "",
@@ -22,6 +23,7 @@
     "(^((:art:|🎨) )?[sS]tyle\\()": "(",
     "(^([pP]erf|:zap:|:rocket:|⚡|🚀)( [pP]erf)?: )": "",
     "(^((:zap:|:rocket:|⚡|🚀) )?[pP]erf\\()": "(",
-    "\\((?!i\\b|ignore\\b|release\\b)([^)]+)\\): ": "**$1**: "
+    "\\((?!i\\b|ignore\\b|release\\b)([^)]+)\\): ": "**$1**: ",
+    "(^: )": ""
   }
 }

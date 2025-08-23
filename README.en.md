@@ -4,12 +4,23 @@
 
 English | [中文](/README.md)
 
-Versioning, change-log and release for Hugo FixIt Similar commit style.
+Versioning, change-log and release tool that supports Conventional Commits specification.
 
 ## Features
 
 - Update FixIt internal version number. (**[FixIt](https://github.com/hugo-fixit/FixIt) Only**)
-- Generate changelog automatically. (Powered by [auto-changelog](https://github.com/cookpete/auto-changelog))
+- Automatically generate changelog based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification
+  - `feat:` New features
+  - `fix:` Bug fixes
+  - `docs:` Documentation changes
+  - `style:` Code formatting
+  - `refactor:` Code refactoring
+  - `perf:` Performance optimization
+  - `test:` Test related
+  - `chore:` Build process or auxiliary tool changes
+  - Scope support: `feat(api):`, `fix(ui):`, etc.
+  - Emoji support: `:sparkles: feat:`, `✨ feat:`, etc.
+  - Breaking Changes support: `feat!:`, `feat(scope)!:`, `BREAKING CHANGE:`, etc.
 
 ## Installation
 
@@ -60,3 +71,7 @@ npx fixit-releaser changelog --starting-version v0.3.10
 ```
 
 See more usage in [auto-changelog](https://github.com/cookpete/auto-changelog).
+
+## Acknowledgments
+
+The changelog generation functionality of this project is powered by [auto-changelog](https://github.com/cookpete/auto-changelog).
