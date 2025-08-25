@@ -18,6 +18,7 @@
   - `perf:` 性能优化
   - `test:` 测试相关
   - `chore:` 构建过程或辅助工具的变动
+  - `revert:` 代码回滚
   - 支持 scope：`feat(api):`, `fix(ui):` 等
   - 支持 emoji：`:sparkles: feat:`, `✨ feat:` 等
   - 支持 Breaking Changes：`feat!:`, `feat(scope)!:`, `BREAKING CHANGE:` 等格式

@@ -11,6 +11,8 @@
     "(^((:sparkles:|:tada:|✨|🎉) )?[fF]eat\\()": "(",
     "(^([fF]ix|:bug:|🐛)( [fF]ix)?: )": "",
     "(^((:bug:|🐛) )?[fF]ix\\()": "(",
+    "(^([rR]evert|:rewind:|⏪)( [rR]evert)?(:)? )": "",
+    "(^((:rewind:|⏪) )?[rR]evert\\()": "(",
     "(^([cC]hore|:wrench:|:hammer:|🔧|🔨)( [cC]hore)?: )": "",
     "(^((:wrench:|:hammer:|🔧|🔨) )?[cC]hore\\()": "(",
     "(^([dD]ocs|:memo:|:book:|📝|📚)( [dD]ocs)?: )": "",

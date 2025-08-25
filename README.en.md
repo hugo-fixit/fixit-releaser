@@ -18,6 +18,7 @@ Versioning, change-log and release tool that supports Conventional Commits speci
   - `perf:` Performance optimization
   - `test:` Test related
   - `chore:` Build process or auxiliary tool changes
+  - `revert:` Code rollback
   - Scope support: `feat(api):`, `fix(ui):`, etc.
   - Emoji support: `:sparkles: feat:`, `✨ feat:`, etc.
   - Breaking Changes support: `feat!:`, `feat(scope)!:`, `BREAKING CHANGE:`, etc.
