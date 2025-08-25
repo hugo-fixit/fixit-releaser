@@ -21,6 +21,7 @@ Versioning, change-log and release tool that supports Conventional Commits speci
   - Scope support: `feat(api):`, `fix(ui):`, etc.
   - Emoji support: `:sparkles: feat:`, `✨ feat:`, etc.
   - Breaking Changes support: `feat!:`, `feat(scope)!:`, `BREAKING CHANGE:`, etc.
+  - Automatically ignore WIP commits: `wip:`, `Wip:` and other temporary commits are excluded from changelog
 
 ## Installation
 

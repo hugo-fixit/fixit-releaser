@@ -21,6 +21,7 @@
   - 支持 scope：`feat(api):`, `fix(ui):` 等
   - 支持 emoji：`:sparkles: feat:`, `✨ feat:` 等
   - 支持 Breaking Changes：`feat!:`, `feat(scope)!:`, `BREAKING CHANGE:` 等格式
+  - 自动忽略 WIP 提交：`wip:`, `Wip:` 等临时提交不会包含在变更日志中
 
 ## 安装
 

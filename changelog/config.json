@@ -3,7 +3,7 @@
   "sortCommits": "relevance",
   "commitLimit": false,
   "releaseSummary": true,
-  "ignoreCommitPattern": "\\((i|ignore|release)\\)|ignore-for-release",
+  "ignoreCommitPattern": "\\((i|ignore|release|wip)\\)|ignore-for-release|(^(wip|Wip|WIP):)",
   "replaceText": {
     "([bB]reaking( [cC]hange)?|BREAKING CHANGE): ": "",
     "(^([a-zA-Z]+)(\\([^)]+\\))?!: )": "$3: ",
@@ -23,7 +23,7 @@
     "(^((:art:|🎨) )?[sS]tyle\\()": "(",
     "(^([pP]erf|:zap:|:rocket:|⚡|🚀)( [pP]erf)?: )": "",
     "(^((:zap:|:rocket:|⚡|🚀) )?[pP]erf\\()": "(",
-    "\\((?!i\\b|ignore\\b|release\\b)([^)]+)\\): ": "**$1**: ",
+    "(^\\((?!i\\b|ignore\\b|release\\b)([^)]+)\\): )": "**$1**: ",
     "(^: )": ""
   }
 }
