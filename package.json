@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.5.1",
   "packageManager": "pnpm@9.15.0",
-  "description": "Versioning, change-log and release tool that supports Conventional Commits specification.",
+  "description": "Versioning, change-log and release tool.",
   "author": "Lruihao (https://lruihao.cn)",
   "license": "MIT",
   "homepage": "https://github.com/hugo-fixit/fixit-releaser#readme",
