@@ -23,6 +23,8 @@ Example Definitions
 - test: Adding missing tests or correcting existing tests
 - docs: Adding/updating documentation
 - chore: Something like updating a library version, or moving files to be in a better location and updating all file refs
+- build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- ci: Changes to CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
 - revert: Reverts a previous commit
 
 Breaking Change Examples
@@ -35,6 +37,8 @@ Emoji Format Examples
 - :sparkles: feat: xxx / ✨ feat: xxx / :sparkles: xxx / ✨ xxx
 - :bug: fix: xxx / 🐛 fix: xxx / :bug: xxx / 🐛 xxx
 - :wrench: chore: xxx / 🔧 chore: xxx / :wrench: xxx / 🔧 xxx
+- :construction: build: xxx / 🚧 build: xxx / :construction: xxx / 🚧 xxx
+- :construction_worker: ci: xxx / 👷 ci: xxx / :construction_worker: xxx / 👷 xxx
 - :memo: docs: xxx / 📝 docs: xxx / :memo: xxx / 📝 xxx
 - :recycle: refactor: xxx / ♻️ refactor: xxx / :recycle: xxx / ♻️ xxx
 - :white_check_mark: test: xxx / ✅ test: xxx / :white_check_mark: xxx / ✅ xxx
@@ -132,7 +136,15 @@ Regex reminders
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
-  {{#commit-list commits heading='### :sparkles: General Changes' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:|^[fF]eat:|^[fF]eat\(|^[fF]ix:|^[fF]ix\(|^[rR]evert|^[rR]evert\(|^[cC]hore:|^[cC]hore\(|^[dD]ocs:|^[dD]ocs\(|^[rR]efactor:|^[rR]efactor\(|^[tT]est:|^[tT]est\(|^[sS]tyle:|^[sS]tyle\(|^[pP]erf:|^[pP]erf\(|^:sparkles:|^:tada:|^✨|^🎉|^:bug:|^🐛|^:rewind:|^⏪|^:wrench:|^:hammer:|^🔧|^🔨|^:memo:|^:book:|^📝|^📚|^:recycle:|^♻️|^:white_check_mark:|^:test_tube:|^✅|^🧪|^:art:|^🎨|^:zap:|^:rocket:|^⚡|^🚀'}}
+  {{#commit-list commits heading='### :construction: Build Changes' message='^[bB]uild:|^[bB]uild\(|^:construction:|^🚧' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :construction_worker: CI Changes' message='^[cC]i:|^[cC]i\(|^:construction_worker:|^👷' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:'}}
+    - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### :sparkles: General Changes' exclude='([bB]reaking( [cC]hange)?|BREAKING CHANGE):|^([a-zA-Z]+)(\([^)]+\))?!:|^[fF]eat:|^[fF]eat\(|^[fF]ix:|^[fF]ix\(|^[rR]evert|^[rR]evert\(|^[cC]hore:|^[cC]hore\(|^[bB]uild:|^[bB]uild\(|^[cC]i:|^[cC]i\(|^[dD]ocs:|^[dD]ocs\(|^[rR]efactor:|^[rR]efactor\(|^[tT]est:|^[tT]est\(|^[sS]tyle:|^[sS]tyle\(|^[pP]erf:|^[pP]erf\(|^:sparkles:|^:tada:|^✨|^🎉|^:bug:|^🐛|^:rewind:|^⏪|^:wrench:|^:hammer:|^🔧|^🔨|^:construction:|^🚧|^:construction_worker:|^👷|^:memo:|^:book:|^📝|^📚|^:recycle:|^♻️|^:white_check_mark:|^:test_tube:|^✅|^🧪|^:art:|^🎨|^:zap:|^:rocket:|^⚡|^🚀'}}
     - {{capitalize subject}} [`{{shorthash}}`]({{href}}) by {{githubUser author}}
   {{/commit-list}}
 
