@@ -6,14 +6,14 @@ English | [中文](/README.md)
 
 Versioning, change-log and release tool.
 
-## Features
+## ✨ Features
 
-- Automatically generate changelog based on Conventional Commits specification
-- Update FixIt internal version number (`*`)
+- 📝 Automatically generate changelog (Conventional Commits specification)
+- 🔖 Update FixIt internal version number `*`
 
 > Features marked with `*` are only applicable to [FixIt](https://github.com/hugo-fixit/FixIt).
 
-## Installation
+## 📦 Installation
 
 | Package Manager | Command                                  |
 | --------------- | ---------------------------------------- |
@@ -31,7 +31,7 @@ Add commands to `package.json`:
 }
 ```
 
-## Usage
+## 🚀 Usage
 
 ### Changelog
 
@@ -64,7 +64,7 @@ npx fixit-releaser changelog --starting-version v0.3.10
 
 > See more command parameters in [auto-changelog](https://github.com/cookpete/auto-changelog).
 
-### Version
+### Version `*`
 
 FixIt internal development version format:
 
@@ -81,12 +81,12 @@ npx fixit-releaser version --prod
 npx fixit-releaser version --dev
 ```
 
-## Configuration
+## ⚙️ Configuration
 
 [todo]
 
 > The `fixit-releaser changelog` configuration is compatible with auto-changelog.
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - [auto-changelog](https://github.com/cookpete/auto-changelog)

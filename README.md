@@ -6,14 +6,14 @@
 
 版本控制、变更日志和发布工具。
 
-## 功能
+## ✨ 功能
 
-- 根据 Conventional Commits 规范自动生成变更日志
-- 更新 FixIt 内部版本号 (`*`)
+- 📝 自动生成变更日志（Conventional Commits 规范）
+- 🔖 更新 FixIt 内部版本号 `*`
 
 > 带 `*` 号的功能仅适用于 [FixIt](https://github.com/hugo-fixit/FixIt)。
 
-## 安装
+## 📦 安装
 
 | 包管理器 | 命令                                      |
 | -------- | ----------------------------------------- |
@@ -31,7 +31,7 @@
 }
 ```
 
-## 使用方法
+## 🚀 用法
 
 ### 变更日志
 
@@ -64,7 +64,7 @@ npx fixit-releaser changelog --starting-version v0.3.10
 
 > 命令更多参数请参见 [auto-changelog](https://github.com/cookpete/auto-changelog)。
 
-### 版本
+### 版本 `*`
 
 FixIt 内部开发版本格式如下：
 
@@ -81,12 +81,12 @@ npx fixit-releaser version --prod
 npx fixit-releaser version --dev
 ```
 
-## 配置
+## ⚙️ 配置
 
 [todo]
 
 > `fixit-releaser changelog` 配置与 auto-changelog 兼容。
 
-## 致谢
+## 🙏 致谢
 
 - [auto-changelog](https://github.com/cookpete/auto-changelog)
