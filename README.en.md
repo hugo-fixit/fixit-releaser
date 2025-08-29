@@ -62,7 +62,7 @@ npx fixit-releaser changelog
 npx fixit-releaser changelog --starting-version v0.3.10
 ```
 
-> See more command parameters in [auto-changelog](https://github.com/cookpete/auto-changelog).
+> Execute `fixit-releaser changelog -h` to get help or refer to the [auto-changelog](https://github.com/cookpete/auto-changelog) documentation.
 
 ### Version `*`
 
@@ -76,9 +76,9 @@ For example:
 
 ```bash
 # Update FixIt production version
-npx fixit-releaser version --prod
+npx fixit-releaser version prod
 # Update FixIt development version
-npx fixit-releaser version --dev
+npx fixit-releaser version dev
 ```
 
 ## ⚙️ Configuration

@@ -15,31 +15,35 @@
     "url": "https://github.com/hugo-fixit/fixit-releaser/issues"
   },
   "keywords": [
-    "fixit",
-    "releaser",
-    "auto-changelog"
+    "changelog",
+    "continuous-integration",
+    "semver",
+    "conventional-changelog",
+    "conventional-commits",
+    "auto-changelog",
+    "hugo-fixit",
+    "rolldown"
   ],
   "bin": {
-    "fixit-releaser": "dist/bin/cli.js"
+    "fixit-releaser": "dist/index.cjs"
   },
   "files": [
-    "changelog",
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "start": "tsc && node ./dist/bin/cli.js changelog",
-    "dev": "tsx ./src/bin/cli.ts changelog",
+    "build": "rolldown --config rolldown.config.ts",
+    "start": "node ./dist/index.cjs changelog",
+    "dev": "tsx ./src/index.ts changelog",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
-  },
-  "dependencies": {
-    "auto-changelog": "^2.5.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.1",
     "@types/node": "^24.3.0",
+    "auto-changelog": "^2.5.0",
     "eslint": "^9.34.0",
+    "fs-extra": "^11.3.1",
+    "rolldown": "1.0.0-beta.34",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }

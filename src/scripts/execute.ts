@@ -1,11 +1,10 @@
-import { execSync } from 'node:child_process'
 import { dirname, join } from 'node:path'
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 import { run } from 'auto-changelog/src/run.js'
+import { updateVersion } from './update-version.js'
 
 const args: string[] = process.argv.slice(2)
-const __root: string = join(dirname(fileURLToPath(import.meta.url)), '../..')
+const __root: string = dirname(process.argv[1])
 
 export function execute() {
   if (args.length === 0) {
@@ -16,18 +15,12 @@ export function execute() {
   const command: string = args[0]
 
   if (command === 'version') {
-    const stage: string = args[1]
-    const updateVersionPath: string = join(__root, './dist/scripts/update-version.js')
-    if (stage === '--dev') {
-      execSync(`node ${updateVersionPath} --dev`, { stdio: 'inherit' })
-    }
-    else if (stage === '--prod') {
-      execSync(`node ${updateVersionPath} --prod`, { stdio: 'inherit' })
-    }
-    else {
-      console.error('Invalid argument. Use --dev or --prod')
+    const type: string = args[1]
+    if (type !== 'dev' && type !== 'prod') {
+      console.error('Invalid argument. Use dev or prod')
       process.exit(1)
     }
+    updateVersion(type)
   }
   else if (command === 'changelog') {
     const configPath: string = join(__root, 'changelog/config.json')
