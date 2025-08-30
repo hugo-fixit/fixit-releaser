@@ -1,7 +1,7 @@
 {
   "name": "@hugo-fixit/fixit-releaser",
   "type": "module",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "packageManager": "pnpm@10.15.0",
   "description": "Versioning, change-log and release tool.",
   "author": "Lruihao (https://lruihao.cn)",
