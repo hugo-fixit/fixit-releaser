@@ -6,6 +6,9 @@ English | [中文](/README.md)
 
 Versioning, change-log and release tool.
 
+> [!CAUTION]
+> Maintenance of this tool has stopped! It is recommended to use [auto changelog](https://github.com/Lruihao/auto-changelog).
+
 ## ✨ Features
 
 - 📝 Automatically generate changelog (Conventional Commits specification)
@@ -26,7 +29,7 @@ Add commands to `package.json`:
 ```json
 {
   "scripts": {
-    "release": "fixit-releaser changelog"
+    "version": "fixit-releaser changelog -p && git add CHANGELOG.md"
   }
 }
 ```
@@ -66,6 +69,9 @@ npx fixit-releaser changelog --starting-version v0.3.10
 
 ### Version `*`
 
+> [!WARNING]
+> Already integrated into [FixIt](https://github.com/hugo-fixit/FixIt) monorepo， See [FixIt#629](https://github.com/hugo-fixit/FixIt/pull/629)
+
 FixIt internal development version format:
 
 ```plaintext
@@ -83,9 +89,7 @@ npx fixit-releaser version dev
 
 ## ⚙️ Configuration
 
-[todo]
-
-> The `fixit-releaser changelog` configuration is compatible with auto-changelog.
+The `fixit-releaser changelog` configuration is compatible with auto-changelog.
 
 ## 🙏 Acknowledgments
 

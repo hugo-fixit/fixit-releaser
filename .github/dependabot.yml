@@ -9,7 +9,7 @@ updates:
     directory: / # Location of package manifests
     schedule:
       interval: quarterly
-    open-pull-requests-limit: 1000
+    open-pull-requests-limit: 0
     assignees:
       - Lruihao
     labels:
@@ -32,7 +32,7 @@ updates:
     directory: /
     schedule:
       interval: quarterly
-    open-pull-requests-limit: 1000
+    open-pull-requests-limit: 0
     assignees:
       - Lruihao
     labels:
