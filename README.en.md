@@ -7,7 +7,7 @@ English | [中文](/README.md)
 Versioning, change-log and release tool.
 
 > [!CAUTION]
-> Maintenance of this tool has stopped! It is recommended to use [auto changelog](https://github.com/Lruihao/auto-changelog).
+> Maintenance of this tool has stopped! It is recommended to use [auto changelog plus](https://github.com/Lruihao/auto-changelog-plus) or [auto changelog](https://github.com/cookpete/auto-changelog) to generate changelogs.
 
 ## ✨ Features
 
